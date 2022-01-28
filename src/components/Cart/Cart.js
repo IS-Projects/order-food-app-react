@@ -5,7 +5,7 @@ import CartItem from "./CartItem";
 const Cart = (props) => {
   const mealsInCart = [{ id: "c1", name: "Sushi", amount: 2, price: 12.99 }];
   return (
-    <Modal>
+    <Modal onClick={props.onClose}>
       <ul className={classes["cart-items"]}>
         {mealsInCart.map((meal) => {
           return (
@@ -24,7 +24,7 @@ const Cart = (props) => {
         <p>88.99</p>
       </div>
       <div className={classes.actions}>
-        <button className={classes["button--alt"]} onClick={props.close}>
+        <button className={classes["button--alt"]} onClick={props.onClose}>
           Close
         </button>
         <button className={classes.button}>Order</button>
