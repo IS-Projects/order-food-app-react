@@ -18,11 +18,11 @@ const portalElement = document.getElementById("overlays");
 const Modal = (props) => {
   return (
     <Fragment>
-      {(createPortal(<Backdrop />), portalElement)}
-      {
-        (createPortal(<ModalOverlay>{props.children}</ModalOverlay>),
-        portalElement)
-      }
+      {createPortal(<Backdrop />, portalElement)}
+      {createPortal(
+        <ModalOverlay>{props.children}</ModalOverlay>,
+        portalElement
+      )}
     </Fragment>
   );
 };
