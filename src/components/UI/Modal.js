@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { createPortal } from "react-dom";
-import classes from "./Card.module.css";
+import classes from "./Modal.module.css";
 
 const Backdrop = (props) => {
   return <div className={classes.backdrop} />;
