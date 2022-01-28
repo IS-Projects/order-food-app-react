@@ -1,6 +1,6 @@
 const CartItem = ({ name, price, quantity }) => {
   return (
-    <div>
+    <li>
       <div>
         <h4>{name}</h4>
         <p>{price}</p>
@@ -10,7 +10,7 @@ const CartItem = ({ name, price, quantity }) => {
         <button>+</button>
         <button>-</button>
       </div>
-    </div>
+    </li>
   );
 };
 
