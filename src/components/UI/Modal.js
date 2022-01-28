@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { createPortal } from "react-dom";
 import classes from "./Card.module.css";
 
 const Backdrop = (props) => {
@@ -12,11 +13,16 @@ const ModalOverlay = (props) => {
     </div>
   );
 };
+
+const portalElement = document.getElementById("overlays");
 const Modal = (props) => {
   return (
     <Fragment>
-      <Backdrop />
-      <ModalOverlay />
+      {(createPortal(<Backdrop />), portalElement)}
+      {
+        (createPortal(<ModalOverlay>{props.children}</ModalOverlay>),
+        portalElement)
+      }
     </Fragment>
   );
 };
