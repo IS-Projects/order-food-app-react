@@ -1,10 +1,10 @@
+import Input from "../../UI/Input";
 import classes from "./MealItemForm.module.css";
 
 const MealItemForm = () => {
   return (
-    <form style={classes.form}>
-      <label htmlFor="amount">Amount</label>
-      <input id="amount" type="number" />
+    <form className={classes.form}>
+      <Input label="Amount" id="amount" type="number" />
       <button>+ Add</button>
     </form>
   );
