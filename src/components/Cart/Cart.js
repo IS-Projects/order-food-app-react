@@ -1,13 +1,24 @@
+import { useContext, useState } from "react";
+import CartContext from "../../store/cart-context";
 import Modal from "../UI/Modal";
 import classes from "./Cart.module.css";
 import CartItem from "./CartItem";
 
 const Cart = (props) => {
-  const mealsInCart = [{ id: "c1", name: "Sushi", amount: 2, price: 12.99 }];
+  const cartCtx = useContext(CartContext);
+
+  const totalAmount = `${cartCtx.totalAmount.toFixed(2)}`;
+
+  const [orderIsValid, setOrderIsValid] = useState(false);
+
+  if (cartCtx.items.length > 0) {
+    setOrderIsValid(true);
+  }
+  // const mealsInCart = [{ id: "c1", name: "Sushi", amount: 2, price: 12.99 }];
   return (
     <Modal onClick={props.onClose}>
       <ul className={classes["cart-items"]}>
-        {mealsInCart.map((meal) => {
+        {cartCtx.items.map((meal) => {
           return (
             <CartItem
               key={meal.id}
@@ -21,13 +32,15 @@ const Cart = (props) => {
       <div className={classes.total}>
         {/* the video uses span for both things below */}
         <h3>Total Amount</h3>
-        <p>88.99</p>
+        <p>{totalAmount}</p>
       </div>
       <div className={classes.actions}>
         <button className={classes["button--alt"]} onClick={props.onClose}>
           Close
         </button>
-        <button className={classes.button}>Order</button>
+        <button className={classes.button} disabled={!orderIsValid}>
+          Order
+        </button>
       </div>
     </Modal>
   );
