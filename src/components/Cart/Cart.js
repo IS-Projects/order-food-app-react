@@ -9,11 +9,8 @@ const Cart = (props) => {
 
   const totalAmount = `${cartCtx.totalAmount.toFixed(2)}`;
 
-  const [orderIsValid, setOrderIsValid] = useState(false);
+  const hasItems = cartCtx.items.length > 0;
 
-  if (cartCtx.items.length > 0) {
-    setOrderIsValid(true);
-  }
   // const mealsInCart = [{ id: "c1", name: "Sushi", amount: 2, price: 12.99 }];
   return (
     <Modal onClick={props.onClose}>
@@ -38,9 +35,10 @@ const Cart = (props) => {
         <button className={classes["button--alt"]} onClick={props.onClose}>
           Close
         </button>
-        <button className={classes.button} disabled={!orderIsValid}>
+        {/* <button className={classes.button} disabled={!hasItems}>
           Order
-        </button>
+        </button> */}
+        {hasItems && <button className={classes.button}>Order</button>}
       </div>
     </Modal>
   );
