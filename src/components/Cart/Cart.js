@@ -11,7 +11,14 @@ const Cart = (props) => {
 
   const hasItems = cartCtx.items.length > 0;
 
-  // const mealsInCart = [{ id: "c1", name: "Sushi", amount: 2, price: 12.99 }];
+  const cartItemRemoveHandler = (id) => {
+    cartCtx.removeItem(id);
+  };
+
+  const cartItemAddHandler = (item) => {
+    cartCtx.addItem(item);
+  };
+
   return (
     <Modal onClick={props.onClose}>
       <ul className={classes["cart-items"]}>
@@ -22,6 +29,8 @@ const Cart = (props) => {
               name={meal.name}
               amount={meal.amount}
               price={meal.price}
+              onRemove={cartItemRemoveHandler.bind(null, meal.id)}
+              onAdd={cartItemAddHandler.bind(null, meal)}
             />
           );
         })}
