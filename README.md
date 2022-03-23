@@ -4,6 +4,8 @@ This repository is created to put in practice the first seventeen modules of the
 
 The modules go over the following topics: "State, Events, Lists, Style, Debugging, Fragments, Portals, Side Effects, Reducers, & Context API, HTTP requests, and Form Validation."
 
+https://order-food-example.netlify.app/
+
 ## Script to run the project:
 
 ### `npm start`
